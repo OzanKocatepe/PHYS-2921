@@ -1,0 +1,12 @@
+Input data: ['E-0', 'px-0', 'py-0', 'pz-0', 'E-1', 'px-1', 'py-1', 'pz-1', 'E-2', 'px-2', 'py-2', 'pz-2', 'E-3', 'px-3', 'py-3', 'pz-3', 'R-01', 'R-02', 'R-03', 'R-12', 'R-13', 'R-23', 'm0']
+Layers: (24, 24, 24)
+Epochs: 100
+Batch size: 100
+Learning rate: 0.0001
+Validation Split: 0.2
+Testing Split: 0.2
+
+Final Training Accuracy = 0.512876570224762
+Final Validation Accuracy = 0.4999232292175293
+Final Training Loss = 0.6924859881401062
+Final Validation Loss = 0.6935845017433167

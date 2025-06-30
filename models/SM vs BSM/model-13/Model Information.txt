@@ -1,0 +1,15 @@
+Input data: ['E-0', 'px-0', 'py-0', 'pz-0', 'E-1', 'px-1', 'py-1', 'pz-1', 'E-2', 'px-2', 'py-2', 'pz-2', 'E-3', 'px-3', 'py-3', 'pz-3', 'm0']
+Layers: (128, 32, 64, 192)
+Epochs: 100
+Batch size: 100
+Learning rate: 0.00043
+Validation Split: 0.2
+Testing Split: 0.2
+
+Final Training Accuracy = 0.8456944227218628
+Final Validation Accuracy = 0.028728069737553596
+Final Training Loss = 0.3876076936721802
+Final Validation Loss = 2.1749765872955322
+
+NOTE: Tried not shuffling the data this time, just in case the shuffle function wasn't being used properly,
+and also tried using StandardScaler instead of MinMaxScaler. Made no difference.

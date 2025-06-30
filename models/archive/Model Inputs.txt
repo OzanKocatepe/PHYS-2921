@@ -1,0 +1,2 @@
+models/SM vs BSM/model-0.keras: [R-01,R-02,R-03,R-12,R-13,R-23,m0]
+models/SM vs BSM/model-1.keras: [E-0,px-0,py-0,pz-0,E-1,px-1,py-1,pz-1,E-2,px-2,py-2,pz-2,E-3,px-3,py-3,pz-3,R-01,R-02,R-03,R-12,R-13,R-23,m0]

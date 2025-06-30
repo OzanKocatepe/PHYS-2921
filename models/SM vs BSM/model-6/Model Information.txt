@@ -1,0 +1,12 @@
+Input data: ['R-01', 'R-02', 'R-03', 'R-12', 'R-13', 'R-23', 'm0']
+Layers: (128, 32, 64, 192)
+Epochs: 100
+Batch size: 32
+Learning rate: 0.43
+Validation Split: 0.2
+Testing Split: 0.2
+
+Final Training Accuracy = 0.49837353825569153
+Final Validation Accuracy = 0.4990021586418152
+Final Training Loss = 0.701930582523346
+Final Validation Loss = 0.6985077857971191
