@@ -1,4 +1,4 @@
-from NeuralNetwork import NeuralNetwork
+from objects.NeuralNetwork import NeuralNetwork
 
 NODES = (128, 32, 64, 192)             # How many nodes to have in each hidden layer.
 EPOCHS = 100                           # Number of epochs to train for.
@@ -9,9 +9,10 @@ TESTING_SPLIT = 0.2                    # Percentage of data to use for testing.
 
 # Input files.
 CSV_FILE_NAME = "Tops - Four-Vectors, DeltaR and m0" 
-SM_CSV = f"output/FourTopLHE_SM/{CSV_FILE_NAME}.csv"
-BSM_CSV = f"output/FourTopLHE_BSM/{CSV_FILE_NAME}.csv"
+SM_CSV = f"../output/FourTopLHE_SM/{CSV_FILE_NAME}.csv"
+BSM_CSV = f"../output/FourTopLHE_BSM/{CSV_FILE_NAME}.csv"
 
-network = NeuralNetwork(VALIDATION_SPLIT, TESTING_SPLIT)
-network.InputData(SM_CSV, BSM_CSV)
-network.TuneHyperParameters()
+if __name__ == "__main__":
+    network = NeuralNetwork(VALIDATION_SPLIT, TESTING_SPLIT)
+    network.InputData(SM_CSV, BSM_CSV)
+    network.TuneHyperParameters()

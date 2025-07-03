@@ -1,0 +1,212 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>objects.FourVector &mdash; PHYS-2921 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            PHYS-2921
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">src</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dataparsing.html">dataparsing package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../objects.html">objects package</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">PHYS-2921</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">objects.FourVector</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for objects.FourVector</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">Particle</span><span class="w"> </span><span class="kn">import</span> <span class="n">Particle</span>
+
+<div class="viewcode-block" id="FourVector">
+<a class="viewcode-back" href="../../objects.html#objects.FourVector.FourVector">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">FourVector</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Stores energy and momentum of a particle as a 4-vector.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        energy (float):</span>
+<span class="sd">            The energy in GeV.</span>
+<span class="sd">        px (float):</span>
+<span class="sd">            The momentum in the x-direction in GeV.</span>
+<span class="sd">        py (float):</span>
+<span class="sd">            The momentum in the y-direction in GeV.</span>
+<span class="sd">        pz (float):</span>
+<span class="sd">            The momentum in the z-direction in GeV.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">energy</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">px</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">py</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">pz</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates a 4-vector.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            energy (float):</span>
+<span class="sd">                The energy in GeV.</span>
+<span class="sd">            px (float):</span>
+<span class="sd">                The momentum in the x-direction in GeV.</span>
+<span class="sd">            py (float):</span>
+<span class="sd">                The momentum in the y-direction in GeV.</span>
+<span class="sd">            pz (float):</span>
+<span class="sd">                The momentum in the z-direction in GeV.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">energy</span> <span class="o">=</span> <span class="n">energy</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">px</span> <span class="o">=</span> <span class="n">px</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">py</span> <span class="o">=</span> <span class="n">py</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pz</span> <span class="o">=</span> <span class="n">pz</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Turns the four vector into a string.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            str:</span>
+<span class="sd">                The four vector as a string in the</span>
+<span class="sd">                form (E, px, py, pz).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">energy</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">px</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">py</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pz</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+<div class="viewcode-block" id="FourVector.SumFourVectors">
+<a class="viewcode-back" href="../../objects.html#objects.FourVector.FourVector.SumFourVectors">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">SumFourVectors</span><span class="p">(</span><span class="n">particles</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Particle</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">FourVector</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sums the 4-vectors of a list of particles.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            list[Particle]:</span>
+<span class="sd">                A list of the detected particles to sum together.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            FourVector:</span>
+<span class="sd">                The combined four vector.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="c1"># Creates a base four vector.</span>
+        <span class="n">combinedFourVector</span> <span class="o">=</span> <span class="n">FourVector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        
+        <span class="c1"># Adds all of the four vectors of the events to combine.</span>
+        <span class="k">for</span> <span class="n">particle</span> <span class="ow">in</span> <span class="n">particles</span><span class="p">:</span>
+            <span class="n">combinedFourVector</span> <span class="o">+=</span> <span class="n">particle</span><span class="o">.</span><span class="n">fourVector</span>
+
+        <span class="k">return</span> <span class="n">combinedFourVector</span></div>
+
+
+    <span class="c1"># Note: In units of c = 1, the rest mass is the magnitude of the 4-vector.</span>
+<div class="viewcode-block" id="FourVector.Magnitude">
+<a class="viewcode-back" href="../../objects.html#objects.FourVector.FourVector.Magnitude">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">Magnitude</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets the magnitude of the four vector.</span>
+<span class="sd">        </span>
+<span class="sd">        It is important to note that the magnitude of the 4-vector</span>
+<span class="sd">        is E^2 - px^2 - py^2 - pz^2, which differs from normal vector magnitude.</span>
+<span class="sd">        Also, since we are using units of c = 1, the magnitude of the 4-vector is</span>
+<span class="sd">        the invariant mass in GeV.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            float:</span>
+<span class="sd">                The magnitude of the 4-vector, equal to the invariant mass.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">energy</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">px</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">py</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">pz</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span></div>
+
+    
+    <span class="k">def</span><span class="w"> </span><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">FourVector</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FourVector</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds two 4-vectors together component-wise.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            other (FourVector):</span>
+<span class="sd">                The other 4-vector to add to the first one.</span>
+<span class="sd">                </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            FourVector:</span>
+<span class="sd">                The combined 4-vector.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">FourVector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">energy</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">energy</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">px</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">px</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">py</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">py</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pz</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">pz</span><span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Ozan Kocatepe.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,7 +1,7 @@
 from __future__ import annotations
 import math
 
-from FourVector import FourVector
+from objects.FourVector import FourVector
 
 class Particle:
     """A single particle detection.

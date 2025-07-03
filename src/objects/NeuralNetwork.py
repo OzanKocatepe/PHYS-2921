@@ -13,8 +13,8 @@ from sklearn.utils import shuffle
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
 from sklearn.metrics import roc_curve, auc
 
-from Plotting import PlotHistogram
-from DataIO import ReadDataFromCSV
+from dataparsing.Plotting import PlotHistogram
+from dataparsing.DataIO import ReadDataFromCSV
 
 class NeuralNetwork:
     """Neural Network for differentiating between SM and BSM particle events.

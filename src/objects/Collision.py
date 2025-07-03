@@ -1,5 +1,5 @@
-from Particle import Particle
-from FourVector import FourVector
+from objects.Particle import Particle
+from objects.FourVector import FourVector
 from typing import Callable
 
 class Collision:
