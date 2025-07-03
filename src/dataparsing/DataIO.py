@@ -1,7 +1,7 @@
 import os
 
-from Collision import Collision
-from Particle import Particle
+from objects.Collision import Collision
+from objects.Particle import Particle
 
 """Contains the functions used to extract data from a file."""
 
