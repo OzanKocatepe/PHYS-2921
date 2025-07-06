@@ -98,3 +98,13 @@ class FourVector:
         """
 
         return FourVector(self.energy + other.energy, self.px + other.px, self.py + other.py, self.pz + other.pz)
+    
+    def toList(self) -> list[float]:
+        """Converts the 4-vector into a list.
+        
+        Returns:
+            list[float]:
+                The 4-vector in list form.
+        """
+
+        return [self.energy, self.px, self.py, self.pz]
