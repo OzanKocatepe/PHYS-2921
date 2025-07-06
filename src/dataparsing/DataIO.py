@@ -216,7 +216,7 @@ def OutputDictToCSV(data: list[dict], fileName: str) -> None:
 
     file = open(fileName, 'w')
 
-    keys = data[0].keys()
+    keys = list(data[0].keys())
 
     # Writes the keys to the header of the file.
     for key in keys[0:-1]:

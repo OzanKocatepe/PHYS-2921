@@ -12,8 +12,6 @@ if __name__ == "__main__":
     includeDeltaR = False
     includeInvariantMass = False
 
-    print(sys.argv)
-
     # Looks for the command flags.
     for i in range(1, len(sys.argv)):
 
@@ -56,7 +54,8 @@ if __name__ == "__main__":
     
     # Extracts the collision data from the input folder.
     collisions = DataIO.ExtractCollisionsFromFolder(inputFolder)
-    collisions = [collision.Filter([6, -6]) for collision in collisions]
+    [collision.Filter([6, -6]) for collision in collisions]
 
-    # Gets the CSV data and stores it in a list of dicts.
+    # Gets the desired data and outputs it to the CSV.
     csvData = Manipulation.ExtractAttributes(collisions, includeFourVectors, includeDeltaR, includeInvariantMass)
+    DataIO.OutputDictToCSV(csvData, outputFile)
