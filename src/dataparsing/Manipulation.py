@@ -47,3 +47,6 @@ def ExtractAttributes(collisions: list[Collision],
         if (includeInvariantMass):
             dict["m0"] = collision.GetCombinedInvariantMass()
         
+        output.append(dict)
+    
+    return output

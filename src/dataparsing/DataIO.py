@@ -157,3 +157,74 @@ def ReadListFromCSV(fileName: str) -> tuple[list[str], list[tuple[float]]]:
 
     file.close()
     return header, data
+
+def ReadDictFromCSV(fileName: str) -> list[dict]:
+    """Reads the data from a CSV as a list of dictionaries.
+    
+    Parameters:
+        fileName (str):
+            The path to the CSV file.
+
+    Returns:
+        list[dict]:
+            A list of dictionaries, where each dictionary contains the information
+            from a single line. The keys of each dictionary are the corresponding header the
+            data was stored under. If there was no data stored, a None type is given instead.
+    """
+
+    data = []
+
+    file = open(fileName, 'r')
+    lines = file.readlines()
+    file.close()
+
+    # Reads the keys from the header.
+    keys = lines[0].split("\n")
+    keys = keys.split(",")
+
+    # Loops through all lines after the header.
+    for line in lines[1:]:
+        dict = {}
+
+        values = line.split("\n")
+        values = values.split(",")
+
+        # Loops through all the given values.
+        for i in range(len(values)):
+            dict[keys[i]] = values[i]
+
+        # Any values not given are set to be None.
+        # If all values (or extra) values are given, this code
+        # won't run.
+        for i in range(len(values), len(keys)):
+            dict[keys[i]] = None
+
+        data.append(dict)
+
+    return data
+
+def OutputDictToCSV(data: list[dict], fileName: str) -> None:
+    """Outputs a list of dictionaries to a CSV.
+    
+    Parameters:
+        data (list[dict]):
+            A list of dictionaries, where each dictionary contains the same set
+            of keys. Each dictionary will be written to one line.
+        fileName (str):
+            The file path to write the CSV to.
+    """
+
+    file = open(fileName, 'w')
+
+    keys = data[0].keys()
+
+    # Writes the keys to the header of the file.
+    for key in keys[0:-1]:
+        file.write(f"{key},")
+    file.write(f"{keys[-1]}\n")
+    
+    for line in data:
+        for key in keys[0:-1]:
+            file.write(f"{line[key]},")
+        file.write(f"{line[keys[-1]]}\n")
+            
