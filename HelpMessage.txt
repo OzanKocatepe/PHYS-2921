@@ -1,0 +1,10 @@
+This program creates CSV files from simulated particle collision files.
+
+python3 CreateCSV.py folder [flags]
+
+:: Options ::
+
+-o, -output : The following argument should be the desired file path for the output CSV.
+-v, -vectors : Adds the 4-vectors to the CSV.
+-r, -deltar : Adds the Delta R separations to the CSV.
+-m, -mass : Adds the combined invariant mass of each collision to the CSV.
