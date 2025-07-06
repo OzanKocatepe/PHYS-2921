@@ -16,5 +16,3 @@ documentation for details.
    :caption: Contents:
 
    modules
-   dataparsing
-   objects
