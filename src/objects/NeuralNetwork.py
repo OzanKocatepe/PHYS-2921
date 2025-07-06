@@ -14,7 +14,7 @@ from sklearn.preprocessing import MinMaxScaler, StandardScaler
 from sklearn.metrics import roc_curve, auc
 
 from dataparsing.Plotting import PlotHistogram
-from dataparsing.DataIO import ReadDataFromCSV
+from dataparsing.DataIO import ReadListFromCSV
 
 class NeuralNetwork:
     """Neural Network for differentiating between SM and BSM particle events.
@@ -123,8 +123,8 @@ class NeuralNetwork:
         """
 
         # Reads the information from the CSVs.
-        header, dataSM = ReadDataFromCSV(smCSV)
-        header, dataBSM = ReadDataFromCSV(bsmCSV)
+        header, dataSM = ReadListFromCSV(smCSV)
+        header, dataBSM = ReadListFromCSV(bsmCSV)
 
         # Stores the names of the data.
         self.inputDataNames = header

@@ -122,7 +122,7 @@ def OutputListToCSV(data: list[list], fileName: str, header: str) -> None:
 
     file.close()
 
-def ReadDataFromCSV(fileName: str) -> tuple[list[str], list[tuple[float]]]:
+def ReadListFromCSV(fileName: str) -> tuple[list[str], list[tuple[float]]]:
     """Reads data from a CSV file.
     
     Parameters:
