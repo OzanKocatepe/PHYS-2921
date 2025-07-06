@@ -31,20 +31,19 @@ def ExtractAttributes(collisions: list[Collision],
 
         if (includeFourVectors):
             fourVectors = collision.GetFourVectors()
-            # Converts the array of 4-vectors into a list of floats, where
-            # each 4-vector is stored successively.
-            fourVectorsList = []
 
-            for vec in fourVectors:
-                fourVectorsList += vec.toList()
-
-            dict["fourVectors"] = fourVectorsList
+            for i in range(len(fourVectors)):
+                dict[f"E-{i}"] = fourVectors[i].energy
+                dict[f"px-{i}"] = fourVectors[i].px
+                dict[f"py-{i}"] = fourVectors[i].py
+                dict[f"pz-{i}"] = fourVectors[i].pz
 
         if (includeDeltaR):
             deltaR = collision.CalculateAllDeltaR()
             
-            dict["deltaR"] = deltaR
+            for key in deltaR.keys():
+                dict[f"R-{key[0]}{key[1]}"] = deltaR[key]
 
         if (includeInvariantMass):
-            dict["invariantMass"] = collision.GetCombinedInvariantMass()
+            dict["m0"] = collision.GetCombinedInvariantMass()
         
