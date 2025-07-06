@@ -12,6 +12,14 @@ dataparsing.DataIO module
    :undoc-members:
    :show-inheritance:
 
+dataparsing.Manipulation module
+-------------------------------
+
+.. automodule:: dataparsing.Manipulation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 dataparsing.Plotting module
 ---------------------------
 

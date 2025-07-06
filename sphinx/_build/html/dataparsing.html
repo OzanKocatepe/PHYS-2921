@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="objects package" href="objects.html" />
+    <link rel="next" title="mainData module" href="mainData.html" />
     <link rel="prev" title="src" href="modules.html" /> 
 </head>
 
@@ -44,7 +44,33 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="modules.html">src</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">src</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">dataparsing package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-dataparsing.DataIO">dataparsing.DataIO module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dataparsing.DataIO.ExtractCollisionsFromFile"><code class="docutils literal notranslate"><span class="pre">ExtractCollisionsFromFile()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dataparsing.DataIO.ExtractCollisionsFromFolder"><code class="docutils literal notranslate"><span class="pre">ExtractCollisionsFromFolder()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dataparsing.DataIO.OutputListToCSV"><code class="docutils literal notranslate"><span class="pre">OutputListToCSV()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dataparsing.DataIO.ReadDataFromCSV"><code class="docutils literal notranslate"><span class="pre">ReadDataFromCSV()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-dataparsing.Manipulation">dataparsing.Manipulation module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dataparsing.Manipulation.ExtractAttributes"><code class="docutils literal notranslate"><span class="pre">ExtractAttributes()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-dataparsing.Plotting">dataparsing.Plotting module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dataparsing.Plotting.PlotHistogram"><code class="docutils literal notranslate"><span class="pre">PlotHistogram()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-dataparsing">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mainData.html">mainData module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mainNetwork.html">mainNetwork module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mainPlotting.html">mainPlotting module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects.html">objects package</a></li>
+</ul>
+</li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">dataparsing package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-dataparsing.DataIO">dataparsing.DataIO module</a><ul>
@@ -52,6 +78,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#dataparsing.DataIO.ExtractCollisionsFromFolder"><code class="docutils literal notranslate"><span class="pre">ExtractCollisionsFromFolder()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dataparsing.DataIO.OutputListToCSV"><code class="docutils literal notranslate"><span class="pre">OutputListToCSV()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dataparsing.DataIO.ReadDataFromCSV"><code class="docutils literal notranslate"><span class="pre">ReadDataFromCSV()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-dataparsing.Manipulation">dataparsing.Manipulation module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dataparsing.Manipulation.ExtractAttributes"><code class="docutils literal notranslate"><span class="pre">ExtractAttributes()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#module-dataparsing.Plotting">dataparsing.Plotting module</a><ul>
@@ -78,6 +108,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">src</a></li>
       <li class="breadcrumb-item active">dataparsing package</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/dataparsing.rst.txt" rel="nofollow"> View page source</a>
@@ -177,6 +208,34 @@ the data from a single line in the file.</p>
 </dd></dl>
 
 </section>
+<section id="module-dataparsing.Manipulation">
+<span id="dataparsing-manipulation-module"></span><h2>dataparsing.Manipulation module<a class="headerlink" href="#module-dataparsing.Manipulation" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="dataparsing.Manipulation.ExtractAttributes">
+<span class="sig-prename descclassname"><span class="pre">dataparsing.Manipulation.</span></span><span class="sig-name descname"><span class="pre">ExtractAttributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">collisions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="objects.html#objects.Collision.Collision" title="objects.Collision.Collision"><span class="pre">Collision</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">includeFourVectors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">includeDeltaR</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">includeInvariantMass</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/dataparsing/Manipulation.html#ExtractAttributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dataparsing.Manipulation.ExtractAttributes" title="Link to this definition"></a></dt>
+<dd><p>Extracts all the desired attributes from a list of collisions.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><dl class="simple">
+<dt>collisions (list[Particle]):</dt><dd><p>The list of collisions to extract the data from.</p>
+</dd>
+<dt>includeFourVectors (bool):</dt><dd><p>Whether to include the four vectors of the particles.</p>
+</dd>
+<dt>includeDeltaR (bool):</dt><dd><p>Whether to include the delta R separations of the particles.</p>
+</dd>
+<dt>includeInvariantMass (bool):</dt><dd><p>Whether to include the combined invariant mass of each collision.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>list[dict]:</dt><dd><p>A list of dictionaries, with each dictionary containing the desired attributes
+extracted from a single collision.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
 <section id="module-dataparsing.Plotting">
 <span id="dataparsing-plotting-module"></span><h2>dataparsing.Plotting module<a class="headerlink" href="#module-dataparsing.Plotting" title="Link to this heading"></a></h2>
 <dl class="py function">
@@ -217,7 +276,7 @@ the data from a single line in the file.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="modules.html" class="btn btn-neutral float-left" title="src" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="objects.html" class="btn btn-neutral float-right" title="objects package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="mainData.html" class="btn btn-neutral float-right" title="mainData module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

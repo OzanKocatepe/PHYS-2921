@@ -1,8 +1,8 @@
 # Moves important files out of sphinx.
-mv sphinx/conf.py ..
-mv sphinx/index.rst ..
-mv sphinx/make.bat ..
-mv sphinx/Makefile ..
+mv sphinx/conf.py .
+mv sphinx/index.rst .
+mv sphinx/make.bat .
+mv sphinx/Makefile .
 
 # Delete all previous sphinx files.
 rm -r sphinx/*
