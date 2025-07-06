@@ -8,8 +8,8 @@ make html
 cd ..
 
 # Remove pre-existing docs files.
-rm -rf docs/*
+rm -r docs/*
 
 # Set up new docs files.
-cp sphinx/_build/html/* docs/
+cp -r sphinx/_build/html/* docs/
 touch docs/.nojekyll
