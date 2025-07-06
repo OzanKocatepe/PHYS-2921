@@ -85,7 +85,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">dataparsing.Plotting</span><span class="w"> </span><span class="kn">import</span> <span class="n">PlotHistogram</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">dataparsing.DataIO</span><span class="w"> </span><span class="kn">import</span> <span class="n">ReadDataFromCSV</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataparsing.DataIO</span><span class="w"> </span><span class="kn">import</span> <span class="n">ReadListFromCSV</span>
 
 <div class="viewcode-block" id="NeuralNetwork">
 <a class="viewcode-back" href="../../objects.html#objects.NeuralNetwork.NeuralNetwork">[docs]</a>
@@ -198,8 +198,8 @@
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="c1"># Reads the information from the CSVs.</span>
-        <span class="n">header</span><span class="p">,</span> <span class="n">dataSM</span> <span class="o">=</span> <span class="n">ReadDataFromCSV</span><span class="p">(</span><span class="n">smCSV</span><span class="p">)</span>
-        <span class="n">header</span><span class="p">,</span> <span class="n">dataBSM</span> <span class="o">=</span> <span class="n">ReadDataFromCSV</span><span class="p">(</span><span class="n">bsmCSV</span><span class="p">)</span>
+        <span class="n">header</span><span class="p">,</span> <span class="n">dataSM</span> <span class="o">=</span> <span class="n">ReadListFromCSV</span><span class="p">(</span><span class="n">smCSV</span><span class="p">)</span>
+        <span class="n">header</span><span class="p">,</span> <span class="n">dataBSM</span> <span class="o">=</span> <span class="n">ReadListFromCSV</span><span class="p">(</span><span class="n">bsmCSV</span><span class="p">)</span>
 
         <span class="c1"># Stores the names of the data.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">inputDataNames</span> <span class="o">=</span> <span class="n">header</span>

@@ -202,9 +202,9 @@
     <span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="ReadDataFromCSV">
-<a class="viewcode-back" href="../../dataparsing.html#dataparsing.DataIO.ReadDataFromCSV">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">ReadDataFromCSV</span><span class="p">(</span><span class="n">fileName</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">]]]:</span>
+<div class="viewcode-block" id="ReadListFromCSV">
+<a class="viewcode-back" href="../../dataparsing.html#dataparsing.DataIO.ReadListFromCSV">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">ReadListFromCSV</span><span class="p">(</span><span class="n">fileName</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">]]]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Reads data from a CSV file.</span>
 <span class="sd">    </span>
 <span class="sd">    Parameters:</span>
@@ -240,6 +240,83 @@
     <span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">header</span><span class="p">,</span> <span class="n">data</span></div>
 
+
+<div class="viewcode-block" id="ReadDictFromCSV">
+<a class="viewcode-back" href="../../dataparsing.html#dataparsing.DataIO.ReadDictFromCSV">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">ReadDictFromCSV</span><span class="p">(</span><span class="n">fileName</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reads the data from a CSV as a list of dictionaries.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">        fileName (str):</span>
+<span class="sd">            The path to the CSV file.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list[dict]:</span>
+<span class="sd">            A list of dictionaries, where each dictionary contains the information</span>
+<span class="sd">            from a single line. The keys of each dictionary are the corresponding header the</span>
+<span class="sd">            data was stored under. If there was no data stored, a None type is given instead.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="c1"># Reads the keys from the header.</span>
+    <span class="n">keys</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">keys</span> <span class="o">=</span> <span class="n">keys</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Loops through all lines after the header.</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+        <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="n">values</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Loops through all the given values.</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)):</span>
+            <span class="nb">dict</span><span class="p">[</span><span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+        <span class="c1"># Any values not given are set to be None.</span>
+        <span class="c1"># If all values (or extra) values are given, this code</span>
+        <span class="c1"># won&#39;t run.</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">keys</span><span class="p">)):</span>
+            <span class="nb">dict</span><span class="p">[</span><span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">dict</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">data</span></div>
+
+
+<div class="viewcode-block" id="OutputDictToCSV">
+<a class="viewcode-back" href="../../dataparsing.html#dataparsing.DataIO.OutputDictToCSV">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">OutputDictToCSV</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">],</span> <span class="n">fileName</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Outputs a list of dictionaries to a CSV.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">        data (list[dict]):</span>
+<span class="sd">            A list of dictionaries, where each dictionary contains the same set</span>
+<span class="sd">            of keys. Each dictionary will be written to one line.</span>
+<span class="sd">        fileName (str):</span>
+<span class="sd">            The file path to write the CSV to.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+
+    <span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+    <span class="c1"># Writes the keys to the header of the file.</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">,&quot;</span><span class="p">)</span>
+    <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">keys</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">line</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="si">}</span><span class="s2">,&quot;</span><span class="p">)</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">line</span><span class="p">[</span><span class="n">keys</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+            
 </pre></div>
 
            </div>

@@ -118,9 +118,12 @@
                 <span class="nb">dict</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;R-</span><span class="si">{</span><span class="n">key</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}{</span><span class="n">key</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">deltaR</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="n">includeInvariantMass</span><span class="p">):</span>
-            <span class="nb">dict</span><span class="p">[</span><span class="s2">&quot;m0&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">collision</span><span class="o">.</span><span class="n">GetCombinedInvariantMass</span><span class="p">()</span></div>
-
+            <span class="nb">dict</span><span class="p">[</span><span class="s2">&quot;m0&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">collision</span><span class="o">.</span><span class="n">GetCombinedInvariantMass</span><span class="p">()</span>
         
+        <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">dict</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">output</span></div>
+
 </pre></div>
 
            </div>
