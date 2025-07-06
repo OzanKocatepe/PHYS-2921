@@ -42,8 +42,6 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../modules.html">src</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../dataparsing.html">dataparsing package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../objects.html">objects package</a></li>
 </ul>
 
         </div>
@@ -106,22 +104,21 @@
 
         <span class="k">if</span> <span class="p">(</span><span class="n">includeFourVectors</span><span class="p">):</span>
             <span class="n">fourVectors</span> <span class="o">=</span> <span class="n">collision</span><span class="o">.</span><span class="n">GetFourVectors</span><span class="p">()</span>
-            <span class="c1"># Converts the array of 4-vectors into a list of floats, where</span>
-            <span class="c1"># each 4-vector is stored successively.</span>
-            <span class="n">fourVectorsList</span> <span class="o">=</span> <span class="p">[]</span>
 
-            <span class="k">for</span> <span class="n">vec</span> <span class="ow">in</span> <span class="n">fourVectors</span><span class="p">:</span>
-                <span class="n">fourVectorsList</span> <span class="o">+=</span> <span class="n">vec</span><span class="o">.</span><span class="n">toList</span><span class="p">()</span>
-
-            <span class="nb">dict</span><span class="p">[</span><span class="s2">&quot;fourVectors&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fourVectorsList</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fourVectors</span><span class="p">)):</span>
+                <span class="nb">dict</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;E-</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fourVectors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">energy</span>
+                <span class="nb">dict</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;px-</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fourVectors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">px</span>
+                <span class="nb">dict</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;py-</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fourVectors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">py</span>
+                <span class="nb">dict</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;pz-</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fourVectors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">pz</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="n">includeDeltaR</span><span class="p">):</span>
             <span class="n">deltaR</span> <span class="o">=</span> <span class="n">collision</span><span class="o">.</span><span class="n">CalculateAllDeltaR</span><span class="p">()</span>
             
-            <span class="nb">dict</span><span class="p">[</span><span class="s2">&quot;deltaR&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">deltaR</span>
+            <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">deltaR</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="nb">dict</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;R-</span><span class="si">{</span><span class="n">key</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}{</span><span class="n">key</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">deltaR</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="n">includeInvariantMass</span><span class="p">):</span>
-            <span class="nb">dict</span><span class="p">[</span><span class="s2">&quot;invariantMass&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">collision</span><span class="o">.</span><span class="n">GetCombinedInvariantMass</span><span class="p">()</span></div>
+            <span class="nb">dict</span><span class="p">[</span><span class="s2">&quot;m0&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">collision</span><span class="o">.</span><span class="n">GetCombinedInvariantMass</span><span class="p">()</span></div>
 
         
 </pre></div>
